@@ -1,12 +1,12 @@
 import java.time.LocalDateTime;
 
-public class Sceance {
+public class Seance {
     private int id;
     private String nom;
     private LocalDateTime dateHeure;
     private int capaciteMax;
 
-    public Sceance(int id, String nom, LocalDateTime dateHeure, int capaciteMax) {
+    public Seance(int id, String nom, LocalDateTime dateHeure, int capaciteMax) {
         this.id = id;
         this.nom = nom;
         this.dateHeure = dateHeure;
@@ -26,5 +26,8 @@ public class Sceance {
         return capaciteMax;
     }
 
+    public String toString() {
+        return nom + " " + dateHeure + " " + capaciteMax;
+    }
 
 }
