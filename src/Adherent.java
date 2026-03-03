@@ -1,0 +1,2 @@
+public class Adherent {
+}
