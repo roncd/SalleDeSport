@@ -20,7 +20,7 @@ public abstract class Abonnement {
     }
 
     public LocalDate dateFin(){
-    return dateDebut;
+        return dateDebut.plusMonths(dureeMois);
     }
 
     public double coutTotal(){

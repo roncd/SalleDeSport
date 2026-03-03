@@ -21,7 +21,9 @@ public class Reservation {
    }
 
    public double coutPrestations(){
-        return 0;
+       double total = 0;
+       for (Prestation p : prestations) { total += p.getPrix(); }
+       return total;
    }
 
    public void annuler(){
