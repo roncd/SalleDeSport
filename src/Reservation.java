@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Reservation {
     private Seance seance;
     private ArrayList<Prestation> prestations;
+    private StatutReservation statut;
     private enum StatutReservation {CONFIRMEE, ANNULEE};
 
-   public Reservation(Seance seance, ArrayList<Prestation> prestations) {
+   public Reservation(Seance seance) {
        this.seance = seance;
-       this.prestations = prestations;
+       this.prestations = new ArrayList<>();
+       this.statut = StatutReservation.CONFIRMEE;
    }
    public Seance getSeance() {
        return seance;
@@ -16,8 +18,12 @@ public class Reservation {
        return prestations;
    }
 
-   public void ajouterPresation(Prestation p) {
-       prestations.add(p);
+   public void ajouterPrestation(Prestation p) {
+       if(statut == StatutReservation.CONFIRMEE) {
+           prestations.add(p);
+       } else {
+           System.out.println("Impossible d'ajouter une prestation à une réservation annulée.");
+       }
    }
 
    public double coutPrestations(){
@@ -26,10 +32,13 @@ public class Reservation {
        return total;
    }
 
-   public void annuler(){
+    public void annuler() {
+        statut = StatutReservation.ANNULEE;
+    }
 
-   }
-
+    public boolean estAnnulee() {
+        return statut == StatutReservation.ANNULEE;
+    }
     public String toString() {
        return seance.toString()+" "+prestations.toString();
     }
